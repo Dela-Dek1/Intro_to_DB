@@ -22,11 +22,11 @@ CREATE TABLE IF NOT EXISTS Books (
     FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
--- Create Customers table (updated to match checks)
+-- Create Customers table
 CREATE TABLE IF NOT EXISTS Customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(215) NOT NULL,  -- Changed from first_name/last_name
-    email VARCHAR(215) UNIQUE NOT NULL,   -- Adjusted to VARCHAR(215)
+    customer_name VARCHAR(215) NOT NULL,
+    email VARCHAR(215) UNIQUE NOT NULL,
     address TEXT,
     phone VARCHAR(20),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -45,12 +45,12 @@ CREATE TABLE IF NOT EXISTS Orders (
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
 
--- Create Order Details table
-CREATE TABLE IF NOT EXISTS `Order Details` (
+-- Create Order_Details table (with underscore and DOUBLE type for quantity)
+CREATE TABLE IF NOT EXISTS Order_Details (
     order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
     book_id INT NOT NULL,
-    quantity INT NOT NULL CHECK (quantity > 0),
+    quantity DOUBLE NOT NULL,  -- Changed from INT to DOUBLE
     price_at_purchase DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
