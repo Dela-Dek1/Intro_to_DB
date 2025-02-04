@@ -22,12 +22,11 @@ CREATE TABLE IF NOT EXISTS Books (
     FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
--- Create Customers table
+-- Create Customers table (updated to match checks)
 CREATE TABLE IF NOT EXISTS Customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    customer_name VARCHAR(215) NOT NULL,  -- Changed from first_name/last_name
+    email VARCHAR(215) UNIQUE NOT NULL,   -- Adjusted to VARCHAR(215)
     address TEXT,
     phone VARCHAR(20),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -46,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Orders (
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
 
--- Create Order Details table (with backticks for space in name)
+-- Create Order Details table
 CREATE TABLE IF NOT EXISTS `Order Details` (
     order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
