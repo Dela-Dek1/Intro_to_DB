@@ -9,5 +9,5 @@ SELECT
 FROM
     INFORMATION_SCHEMA.COLUMNS
 WHERE
-    TABLE_SCHEMA = DATABASE()
-    AND TABLE_NAME = 'books';  -- Double-check the case: 'books'
+    TABLE_SCHEMA = 'alx_book_store'  -- Explicitly specify the database
+    AND TABLE_NAME = 'books';       -- Explicitly specify the table (lowercase 'b')
