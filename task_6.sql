@@ -4,5 +4,3 @@ VALUES
     (3, 'Obed Ehoneah', 'eobed@sandtech.com', '125 Happiness Ave.'),
     (4, 'Nehemial Kamolu', 'nkamolu@sandtech.com', '126 Happiness Ave.');
 
--- Verify the insertions (optional, but good practice)
-SELECT * FROM customer WHERE customer_id IN (2, 3, 4);
